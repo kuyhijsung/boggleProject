@@ -6,5 +6,9 @@ from boggle import Boggle
 
 class FlaskTests(TestCase):
 
-    # TODO -- write tests for every view function / feature!
-
+    def test_homepage(self):
+        with self.client:
+            response = self.client.get('/')
+            self.assertIn('board', session)
+            self.assertIn(b'Score:', response.data)
+            self.assertIn(b'Time:', response.data)
